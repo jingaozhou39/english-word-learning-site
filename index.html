@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Vocab - 每日英语单词学习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Daily Vocab</h1>
+        <p class="subtitle">每日英语单词学习</p>
+    </header>
+
+    <main>
+        <section class="dashboard" id="dashboard">
+            <div class="stats-grid">
+                <div class="stat">
+                    <span class="stat-value" id="stat-new-today">0</span>
+                    <span class="stat-label">今日新学</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="stat-review-today">0</span>
+                    <span class="stat-label">今日复习</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="stat-extra">0</span>
+                    <span class="stat-label">额外新学</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="stat-total">0</span>
+                    <span class="stat-label">累计学习</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="stat-mastered">0</span>
+                    <span class="stat-label">已掌握</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="stat-pending">0</span>
+                    <span class="stat-label">待复习</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="stat-streak">0</span>
+                    <span class="stat-label">连续天数</span>
+                </div>
+            </div>
+            <p class="dashboard-hint" id="dashboard-hint"></p>
+        </section>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="learn-area" id="learn-area">
+
+            <div id="review-mode" class="learn-mode" style="display:none;">
+                <h3 class="section-title">复习旧词 <span id="review-progress" class="progress-text"></span></h3>
+                <div class="word-card review-card" id="review-card">
+                    <div class="card-header">
+                        <span class="word-en" id="review-word"></span>
+                        <span class="word-phonetic" id="review-phonetic"></span>
+                    </div>
+                    <div class="card-collocation" id="review-collocation"></div>
+                    <div class="card-hidden" id="review-hidden">
+                        <div class="card-meaning" id="review-meaning"></div>
+                        <div class="card-sentence" id="review-sentence"></div>
+                        <div class="card-sentence-trans" id="review-sentence-trans"></div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-sm" data-action="review-show-meaning">查看释义</button>
+                        <button class="btn btn-sm btn-primary" data-action="review-remember">我记得</button>
+                        <button class="btn btn-sm btn-danger" data-action="review-forget">不记得</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="new-mode" class="learn-mode" style="display:none;">
+                <h3 class="section-title">学习新词 <span id="new-progress" class="progress-text"></span></h3>
+                <div class="word-card" id="new-card">
+                    <div class="card-header">
+                        <span class="word-en" id="new-word"></span>
+                        <span class="word-phonetic" id="new-phonetic"></span>
+                    </div>
+                    <div class="card-collocation" id="new-collocation"></div>
+                    <div class="card-meaning" id="new-meaning"></div>
+                    <div class="card-sentence" id="new-sentence"></div>
+                    <div class="card-sentence-trans" id="new-sentence-trans"></div>
+                    <div class="card-actions">
+                        <button class="btn btn-primary btn-lg" data-action="new-learned">已掌握 / 下一个</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="extra-review-area" style="display:none; text-align:center; margin-top: 1rem;">
+                <p style="color:#6b6b6b; margin-bottom:0.75rem;">今天还有 <strong id="remaining-review-count">0</strong> 个单词需要复习，建议继续巩固</p>
+                <button class="btn btn-outline btn-lg" data-action="add-more-reviews">继续复习剩余单词</button>
+            </div>
+
+            <div id="completion-mode" class="completion" style="display:none;">
+                <div class="completion-stats">
+                    <p class="completion-title">今日基础任务已完成</p>
+                    <p class="completion-detail">今日新学：<strong id="comp-new">0</strong> 个</p>
+                    <p class="completion-detail">今日复习：<strong id="comp-review">0</strong> 个</p>
+                    <p class="completion-detail">累计学习：<strong id="comp-total">0</strong> 个</p>
+                </div>
+                <div class="completion-actions">
+                    <button class="btn btn-primary btn-lg" data-action="continue-learning">今日继续学</button>
+                    <button class="btn btn-outline btn-lg" data-action="done-today">明天再学</button>
+                </div>
+                <p class="reminder" id="reminder" style="display:none;"></p>
+            </div>
+
+            <div id="done-mode" class="empty-state" style="display:none;">
+                <p>今天已经完成得很好了，明天继续保持。</p>
+                <button class="btn btn-primary" data-action="reset">重新开始</button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Daily Vocab · 坚持每天学一点</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
