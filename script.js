@@ -369,13 +369,38 @@ function reviewForget() {
   nextWord();
 }
 
-function newLearned() {
+function newShowMeaning() {
+  var nh = $("new-hidden");
+  if (nh) nh.className = "card-hidden show";
+}
+
+function newKnown() {
   var t = appData.today;
   var idx = t.newQueue[t.newIndex];
   var today = getToday();
 
   appData.wordProgress[idx] = {
     firstLearnedDate: today,
+    initialFamiliarity: "known",
+    reviewCount: 1,
+    nextReviewDate: addDays(today, 3),
+    status: "learning"
+  };
+
+  t.newDone += 1;
+  t.newIndex += 1;
+  saveData();
+  nextWord();
+}
+
+function newUnknown() {
+  var t = appData.today;
+  var idx = t.newQueue[t.newIndex];
+  var today = getToday();
+
+  appData.wordProgress[idx] = {
+    firstLearnedDate: today,
+    initialFamiliarity: "unknown",
     reviewCount: 0,
     nextReviewDate: addDays(today, 1),
     status: "learning"
@@ -509,7 +534,9 @@ document.addEventListener("DOMContentLoaded", function() {
       case "review-show-meaning": reviewShowMeaning(); break;
       case "review-remember": reviewRemember(); break;
       case "review-forget": reviewForget(); break;
-      case "new-learned": newLearned(); break;
+      case "new-show-meaning": newShowMeaning(); break;
+      case "new-known": newKnown(); break;
+      case "new-unknown": newUnknown(); break;
       case "continue-learning": continueLearning(); break;
       case "done-today": doneToday(); break;
       case "add-more-reviews": addMoreReviews(); break;

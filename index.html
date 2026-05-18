@@ -82,11 +82,15 @@
                         <span class="word-phonetic" id="new-phonetic"></span>
                     </div>
                     <div class="card-collocation" id="new-collocation"></div>
-                    <div class="card-meaning" id="new-meaning"></div>
-                    <div class="card-sentence" id="new-sentence"></div>
-                    <div class="card-sentence-trans" id="new-sentence-trans"></div>
+                    <div class="card-hidden" id="new-hidden">
+                        <div class="card-meaning" id="new-meaning"></div>
+                        <div class="card-sentence" id="new-sentence"></div>
+                        <div class="card-sentence-trans" id="new-sentence-trans"></div>
+                    </div>
                     <div class="card-actions">
-                        <button class="btn btn-primary btn-lg" data-action="new-learned">已掌握 / 下一个</button>
+                        <button class="btn btn-sm btn-primary" data-action="new-known">认识</button>
+                        <button class="btn btn-sm btn-danger" data-action="new-unknown">不认识</button>
+                        <button class="btn btn-sm" data-action="new-show-meaning">查看释义</button>
                     </div>
                 </div>
             </div>
